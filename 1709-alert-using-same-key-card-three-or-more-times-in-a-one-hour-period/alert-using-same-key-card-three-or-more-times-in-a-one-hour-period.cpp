@@ -27,19 +27,19 @@ public:
         if (f == d) return getTime(a) < getTime(b); 
         return f < d; 
         });
-        int i = 1, j = 0;
+        int i = 1, j = 0, n = (int)keyName.size();
         vector<string> ans;
-        for(; i < keyName.size(); i++){
+        for(; i < n; i++){
             if(getstring(a[i]) != getstring(a[j])){
                 j = i; 
                 continue;
             }
-            while(j <= keyName.size() && i >= j && getTime(a[i]) - getTime(a[j]) > 60){
+            while(j <= n && i >= j && getTime(a[i]) - getTime(a[j]) > 60){
                 j++;
             }
             if(i - j + 1 >= 3) {
                 ans.push_back(getstring(a[i]));
-                while(i < keyName.size() && getstring(a[j]) == getstring(a[i])) i++;
+                while(i < n && getstring(a[j]) == getstring(a[i])) i++;
                 j = i;
             }
         }
